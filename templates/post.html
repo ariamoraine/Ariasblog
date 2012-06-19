@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> { if created ==True print "Congrats!"}
+
+<h1 style="color: purple;">
+	{{ post.title }}
+</h1>
+
+<div style="color: blue;">
+	{{ post.body }}
+</div>
+
+<p>
+	{{ post.date }}
+</p>
+
+
+{% endblock %}

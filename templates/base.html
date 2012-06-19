@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+<body>
+	<h1><a href="/">Welcome my blog</a></h1>
+	{% block content %}{% endblock %}
+	{% block footer %}
+	<hr>
+	<p> You've read everything. </p>
+	{% endblock %}
+</body>
+</html>

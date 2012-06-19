@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ol> 
+	{% for post in posts %}
+		<li> 
+			<H2> <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></H2>
+		</li>
+	{% endfor %}
+</ol>
+<form action="/post/" method="POST">
+	<label for="title">Title</label>
+	<input value="Post Title" type="text" name="title">
+	<br>
+	<label for="body">Body</label>
+	<textarea name="body">Write a new post!</textarea>
+	<input type="submit">
+</form>
+
+{% endblock %}
