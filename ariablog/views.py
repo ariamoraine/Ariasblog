@@ -19,3 +19,12 @@ def newpost(request):
 	t = get_template('post.html')
 	html = t.render(Context({'post': b, 'created': True}))
 	return HttpResponse(html)
+
+def editpostlist(request):
+	t = get_template('editpost.html')
+	html = t.render(Context({'posts': BlogPost.objects.all()}))
+	return HttpResponse(html)
+
+def deletepost(request, id):
+	BlogPost.objects.get(id=id).delete()
+	return list(request, message="Post Deleted!")
