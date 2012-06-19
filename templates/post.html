@@ -16,5 +16,11 @@
 	{{ post.date }}
 </p>
 
-<label action=>
+<form action="/delete/{{post.id}}" method="POST">
+<label>Delete Post?</label>
+<input type=submit>
+	{% if submit %}
+		BlogPost.objects.get(id=id).delete()
+	{% endif %}
+</form>
 {% endblock %}

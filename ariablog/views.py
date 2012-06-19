@@ -26,5 +26,7 @@ def editpostlist(request):
 	return HttpResponse(html)
 
 def deletepost(request, id):
+	t = get_template('delete.html')
 	BlogPost.objects.get(id=id).delete()
-	return list(request, message="Post Deleted!")
+	html = t.render(Context())
+	return HttpResponse(html)

@@ -8,12 +8,15 @@
 		</li>
 	{% endfor %}
 </ol>
+
+<hr>
+<h2>Make a new post</h2>
 <form action="/post/" method="POST">
 	<label for="title">Title</label>
-	<input value="Post Title" type="text" name="title">
+	<input value="Title" type="text" name="title">
 	<br>
 	<label for="body">Body</label>
-	<textarea name="body">Write a new post!</textarea>
+	<textarea name="body">Write something here!</textarea>
 	<input type="submit">
 </form>
 
