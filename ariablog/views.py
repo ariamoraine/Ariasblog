@@ -20,9 +20,23 @@ def newpost(request):
 	html = t.render(Context({'post': b, 'created': True}))
 	return HttpResponse(html)
 
-def editpostlist(request):
-	t = get_template('editpost.html')
-	html = t.render(Context({'posts': BlogPost.objects.all()}))
+def editpost(request, id):
+	p = BlogPost.objects.get(id=id)
+	if request.method == 'GET':
+		t = get_template('editpost.html')
+		html = t.render(Context({'post': p}))
+		return HttpResponse(html)
+	elif request.method == 'POST':
+		p.title = request.POST["title"]
+		p.body = request.POST["body"]
+		p.save()
+		t = get_template('post.html')
+		html = t.render(Context({'post': p, 'edited': True}))
+		return HttpResponse(html)
+		
+def areyousure(request, id):
+	t = get_template('areyousure.html')
+	html = t.render(Context({'post': BlogPost.objects.get(id=id)}))
 	return HttpResponse(html)
 
 def deletepost(request, id):

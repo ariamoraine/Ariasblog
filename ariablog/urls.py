@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from ariablog.views import index, postpage, newpost, editpostlist, deletepost
+from ariablog.views import index, postpage, newpost, editpost, deletepost, areyousure
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,8 +9,9 @@ urlpatterns = patterns('',
 	('^$', index),
 	('^post/(\d{1,3})/$', postpage),
 	('^post/$', newpost),
-	('^edit/$', editpostlist),
+	(r'^edit/(?P<id>\d+)', editpost),
 	(r'^delete/(?P<id>\d+)', deletepost),
+	(r'^sure/(?P<id>\d+)', areyousure),
 	# Examples:
 	# url(r'^$', 'ariablog.views.home', name='home'),
 	# url(r'^ariablog/', include('ariablog.foo.urls')),

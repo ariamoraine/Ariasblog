@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
 {% if created %}
 	<p>Congrats on creating you're new Page</p>
+{% endif %}
+
+{% if edited %}
+	<p>You edited your post!</p>
 {% endif %}
 
 <h1 style="color: red;">
@@ -16,11 +21,10 @@
 	{{ post.date }}
 </p>
 
-<form action="/delete/{{post.id}}" method="POST">
+<a href="/edit/{{post.id}}">edit post?</a>
+
+<form action="/sure/{{post.id}}" method="POST">
 <label>Delete Post?</label>
 <input type=submit>
-	{% if submit %}
-		BlogPost.objects.get(id=id).delete()
-	{% endif %}
 </form>
 {% endblock %}
