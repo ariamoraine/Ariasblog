@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'ariablog.wsgi.application'
 
 import os.path
 
-PROJECT_DIR = os.path.dirname(_file_) # this is not Django setting.
+PROJECT_DIR = os.path.dirname(__file__) # this is not Django setting.
 TEMPLATE_DIRS = (
    os.path.join(PROJECT_DIR, "templates"),
     #'/home/aria/djcode/ariablog/templates',
