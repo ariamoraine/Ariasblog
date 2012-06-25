@@ -2,7 +2,7 @@
 import dj_database_url
 import os
 
-PROJECT_ROOT = os.path.dirname(__file__)
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 DEBUG = True
 
@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'ariablog.wsgi.application'
 
 
 TEMPLATE_DIRS = (
-   os.path.join(PROJECT_ROOT, "templates"),
+   os.path.join(SITE_ROOT, 'templates'),
     #'/home/aria/djcode/ariablog/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
