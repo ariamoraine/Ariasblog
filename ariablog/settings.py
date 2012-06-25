@@ -113,8 +113,7 @@ ROOT_URLCONF = 'ariablog.urls'
 WSGI_APPLICATION = 'ariablog.wsgi.application'
 
 
-TEMPLATE_DIRS = (
-   os.path.join(SITE_ROOT, 'templates'),
+TEMPLATE_DIRS = ( os.path.join(SITE_ROOT, '/templates'),
     #'/home/aria/djcode/ariablog/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
