@@ -2,16 +2,16 @@
 {% block content %}
 
 {% if created %}
-	<p>Congrats on creating you're new Page</p>
+	<h1>Congrats on creating your new post!</h1>
 {% endif %}
 
 {% if edited %}
-	<p>You edited your post!</p>
+	<h1>You edited your post!</h1>
 {% endif %}
 
-<h1 style="color: red;">
+<h3 style="color: green;">
 	{{ post.title }}
-</h1>
+</h3>
 
 <div style="color: blue;">
 	{{ post.body }}
