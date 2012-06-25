@@ -6,7 +6,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	('$', index),
+	('', index),
 	('^post/(\d{1,3})/$', postpage),
 	('^post/$', newpost),
 	(r'^edit/(?P<id>\d+)', editpost),
