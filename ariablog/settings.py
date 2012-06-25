@@ -1,7 +1,11 @@
 # Django settings for ariablog project.
 import dj_database_url
+import os
+
+PROJECT_ROOT = os.path.dirname(__file__)
 
 DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -108,11 +112,9 @@ ROOT_URLCONF = 'ariablog.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'ariablog.wsgi.application'
 
-import os.path
 
-PROJECT_DIR = os.path.dirname(__file__) # this is not Django setting.
 TEMPLATE_DIRS = (
-   os.path.join(PROJECT_DIR, "templates"),
+   os.path.join(PROJECT_ROOT, "templates"),
     #'/home/aria/djcode/ariablog/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
