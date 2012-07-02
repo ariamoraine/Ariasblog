@@ -68,7 +68,7 @@ def signin(request):
 	user = authenticate(username='username', password='password')
 	if request.user.is_authenticated():
 		success = True
-	elif:
+	else:
 		notlog = True
 	html = t.render(Context())
 	return HttpResponse(html)
