@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if request.user.is_authenticated %}
 	<p> You're now signed in.</p>
 	<p><a herf="/logout/">logout</a> <imput type="submit" value="logout"></p>
 {% else %}
