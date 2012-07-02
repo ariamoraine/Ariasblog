@@ -66,10 +66,10 @@ def newuser(request):
 def signin(request):
 	t = get_template('signin.html')
 	user_str = str(request.user)
-    if request.user.is_authenticated():
-        return HttpResponse('%s is logged in' % user_str)
-    else:
-        return HttpResponse('%s is not logged in' % user_str)
+	if request.user.is_authenticated():
+		return HttpResponse('%s is logged in' % user_str)
+	else:
+		return HttpResponse('%s is not logged in' % user_str)
 	html = t.render(Context())
 	return HttpResponse(html)
 
