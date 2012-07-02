@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if success %} 
+    <h1> Thank you for signing in </h1>
+{% endif %}
+
+{% if disabled %}
+    <h1> I'm sorry that account has been disabled</h1>
+{% endif %} 
+
+{% if error %}
+    <h1> I'm sorry that's an invalid login </h1>
+    <h1><a href="/">Try again</a></h1>
+{% endif %}
+
+{% endblock %}
