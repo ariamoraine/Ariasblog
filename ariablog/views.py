@@ -64,7 +64,27 @@ def newuser(request):
 	html = t.render(Context({'user': user}))
 	return HttpResponse(html)
 
-def mylogin(request):
+def login_view(request):
+	if request.method == 'POST':
+		user = authenticate(username = request.POST['login_username'], password = request.POST['login_password'])
+	if user is None:
+		return direct_to_template(request, 'signup.html')
+	if not user.is_active:
+		return direct_to_template(request, 'inactive_account.html')
+	login(request, user)
+	try:
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
+	except KeyError:
+		return HttpResponseRedirect('/')
+
+def logout_view(request):
+	logout(request)
+	try:
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
+	except KeyError:
+		return HttpResponseRedirect('/')
+
+"""def mylogin(request):
 	if request.method == 'POST':
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
 		if user is not None:
@@ -80,7 +100,7 @@ def mylogin(request):
 
 def mylogout(request):
 	logout(request)
-	return direct_to_template(request, 'logout.html')
+	return direct_to_template(request, 'logout.html')"""
 
 #make sign in work
 #only show new post when signed in
