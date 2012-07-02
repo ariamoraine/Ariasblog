@@ -84,8 +84,8 @@ def mylogin(request):
 			return direct_to_template(request, 'invalid_login.html')
 
 def mylogout(request):
+	t = get_template('logout.html')
 	logout(request)
-	t = get_template('loggedout.html')
 	html = t.render(Context())
 	return HttpResponse(html)
 
