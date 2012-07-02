@@ -3,14 +3,13 @@
 
 {% if user.is_authenticated %}
 	<p> You're now signed in.</p>
-	<p><a herf="/logout/">logout</a> <imput type="submit"></p>
+	<p><a herf="/logout/">logout</a> <imput type="submit" value="logout"></p>
 {% else %}
 	<h3>Login</h3>
-	<p>Not signed up?<a href="/signup/">sign up</a></p>
+	<p>Not signed up?<a href="/signup/"> sign up here</a></p>
 	<form action="/login/" method="post" accept-charset="utf-8">
 		<label for="username">Username</label><input type="text" name="username" value="" id="username" />
 		<label for="password">Password</label><input type="password" name="password" value="" id="password" />
-		<input type="hidden" name="next" value="{{ NEXT }}" />
 		<p><input type="submit" value="Login →"></p>
 	</form>
 {% endif %}
