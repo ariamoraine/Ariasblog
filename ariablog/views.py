@@ -69,7 +69,7 @@ def signin(request):
 		success = True
 	else:
 		success = False
-	html = t.render(Context({'user': user}))
+	html = t.render(Context())
 	return HttpResponse(html)
 
 #create sign in url
