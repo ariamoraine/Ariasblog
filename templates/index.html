@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if login=True %}
 <p> You are signed in as {{ user }}</p>
 {% else %}
 <h3>Login</h3>
@@ -22,7 +22,7 @@
 </ol>
 
 <hr>
-{% if user.is_authenticated %}
+{% if login=True %}
 	<h2>Make a new post</h2>
 	<form action="/post/" method="POST">
 		<label for="title">Title</label>
