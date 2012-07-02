@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-
+<h1>Sign in!</h1>
+	<form action="/signin/" method="POST">
+		<label for="username">Username</lable>
+		<input value="username" type="text" name="username">
+		<label for="password">Password</lable>
+		<input value="password" type="text" name="password">
+		<input type="submit">
+	</form>
 <ol> 
 	{% for post in posts %}
 		<li> 
@@ -10,14 +17,16 @@
 </ol>
 
 <hr>
-<h2>Make a new post</h2>
-<form action="/post/" method="POST">
-	<label for="title">Title</label>
-	<input value="Title" type="text" name="title">
-	<br>
-	<label for="body">Body</label>
-	<textarea name="body">Write something here!</textarea>
-	<input type="submit">
-</form>
+{% if request.user.is_authenticated() %}
+	<h2>Make a new post</h2>
+	<form action="/post/" method="POST">
+		<label for="title">Title</label>
+		<input value="Title" type="text" name="title">
+		<br>
+		<label for="body">Body</label>
+		<textarea name="body">Write something here!</textarea>
+		<input type="submit">
+	</form>
+{% endif %}
 
 {% endblock %}
