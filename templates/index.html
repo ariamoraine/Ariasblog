@@ -2,7 +2,8 @@
 {% block content %}
 
 {% if login = True %}
-<p> You are signed in as {{ user }}</p>
+<p> You are signed in as {{ user.username }}</p>
+<p><a herf="/logout/">logout</a></p>
 {% else %}
 <h3>Login</h3>
 <form action="/login/" method="post" accept-charset="utf-8">
