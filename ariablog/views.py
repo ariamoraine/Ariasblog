@@ -53,7 +53,7 @@ def signup(request):
 
 def newuser(request):
 	t = get_template('newuser.html')
-	user = User.objects.create_user(request.Post['username'], request.POST['email'], request.POST['password'])
+	user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
 	user.first_name=request.POST['firstname']
 	user.last_name=request.POST['lastname']
 	user.save()
