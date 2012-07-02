@@ -70,13 +70,13 @@ def mylogin(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				return HttpResponseRedirect('/')
+				return HttpResponseRedirect('profile.html')
 			else:
 				# disabled account
 				return direct_to_template(request, 'inactive_account.html')
 		else:
 			# invalid login
-			return direct_to_template(request, 'invalid_login.html')
+			return HttpResponseRedirect('signup.html')
 
 def mylogout(request):
 	t = get_template('logout.html')
