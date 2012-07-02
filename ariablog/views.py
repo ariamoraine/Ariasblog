@@ -5,6 +5,7 @@ from blog.models import BlogPost
 import datetime
 from django.contrib.auth.models import User
 
+
 def index(request):
 	t = get_template('index.html')
 	html = t.render(Context({'posts': BlogPost.objects.all()}))
