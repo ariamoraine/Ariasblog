@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from ariablog.views import index, signup, login_view, logout_view, newuser, mylogin, mylogout, postpage, newpost, editpost, deletepost, areyousure
+from ariablog.views import index, signup, login_view, logout_view, newuser, postpage, newpost, editpost, deletepost, areyousure
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
