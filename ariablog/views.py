@@ -66,7 +66,7 @@ def newuser(request):
 
 def login_view(request):
 	if request.method == 'POST':
-		user = authenticate(username = request.POST['login_username'], password = request.POST['login_password'])
+		user = authenticate(username = request.POST['username'], password = request.POST['password'])
 	if user is None:
 		return direct_to_template(request, 'signup.html')
 	if not user.is_active:
