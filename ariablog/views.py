@@ -75,6 +75,7 @@ def login_view(request):
 	try:
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
 	except KeyError:
+		loggedin = True
 		return HttpResponseRedirect('/')
 
 def logout_view(request):
