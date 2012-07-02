@@ -84,24 +84,6 @@ def logout_view(request):
 	except KeyError:
 		return HttpResponseRedirect('/')
 
-"""def mylogin(request):
-	if request.method == 'POST':
-		user = authenticate(username=request.POST['username'], password=request.POST['password'])
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				return HttpResponseRedirect('/')
-			else:
-				# disabled account
-				return direct_to_template(request, 'inactive_account.html')
-		else:
-			# invalid login
-			return HttpResponseRedirect('/signup/')
-
-def mylogout(request):
-	logout(request)
-	return direct_to_template(request, 'logout.html')"""
-
 #make sign in work
 #only show new post when signed in
 #link to sign up on main page
