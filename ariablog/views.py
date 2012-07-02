@@ -65,9 +65,10 @@ def newuser(request):
 
 def signin(request):
 	t = get_template('signin.html')
+	user = authenticate(username='username', password='password')
 	if request.user.is_authenticated():
 		success = True
-	else:
+	elif:
 		notlog = True
 	html = t.render(Context())
 	return HttpResponse(html)
