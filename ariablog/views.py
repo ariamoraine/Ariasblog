@@ -70,11 +70,10 @@ def mylogin(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
-				print "You've logged in"
 				if request.POST['next']:
 					return HttpResponseRedirect(request.POST['next'])
 				else:
-					return HttpResponseRedirect('/')
+					return HttpResponseRedirect('/signup/')
 			else:
 				# disabled account
 				return direct_to_template(request, 'inactive_account.html')
