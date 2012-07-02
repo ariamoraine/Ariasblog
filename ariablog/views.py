@@ -3,6 +3,7 @@ from django.template.loader import get_template
 from django.template import Context
 from blog.models import BlogPost 
 import datetime
+from django.contrib.auth.models import User
 
 def index(request):
 	t = get_template('index.html')
@@ -43,4 +44,18 @@ def deletepost(request, id):
 	t = get_template('delete.html')
 	BlogPost.objects.get(id=id).delete()
 	html = t.render(Context())
+	return HttpResponse(html)
+
+def signup(request):
+	t = get_template('signup.html')
+	html = t.render(Context())
+	return HttpResponse(html)
+
+def newuser(request):
+	t = get_template('newuser.html')
+	user = User.objects.create_user(request.Post['username'], request.POST['email'], request.POST['password'])
+	user.first_name=request.POST['firstname']
+	user.last_name=request.POST['lastname']
+	user.save()
+	html = t.render(Context(user))
 	return HttpResponse(html)
