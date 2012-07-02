@@ -5,6 +5,7 @@ from blog.models import BlogPost
 import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.views.generic.simple import direct_to_template
 
 def index(request):
 	t = get_template('index.html')
