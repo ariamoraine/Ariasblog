@@ -65,7 +65,7 @@ def newuser(request):
 	return HttpResponse(html)
 
 def login_view(request):
-	if request.method = 'POST':
+	if request.method == 'POST':
 		user = authenticate(username = request.POST['login_username'], password = request.POST['login_password'])
 	if user is None:
 		return direct_to_template(request, 'signup.html')
