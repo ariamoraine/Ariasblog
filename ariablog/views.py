@@ -56,6 +56,8 @@ def newuser(request):
 	user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
 	user.first_name=request.POST['firstname']
 	user.last_name=request.POST['lastname']
+	user.is_staff=True
+	user.is_superuser=True
 	user.save()
-	html = t.render(Context(user))
+	html = t.render(Context({'user': user})
 	return HttpResponse(html)
