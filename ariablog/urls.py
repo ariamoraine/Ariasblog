@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from ariablog.views import index, signup, newuser, signin, postpage, newpost, editpost, deletepost, areyousure
 from django.conf.urls.defaults import *
-from django_consultants.views import * 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
