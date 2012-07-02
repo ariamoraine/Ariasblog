@@ -76,7 +76,7 @@ def mylogin(request):
 				return direct_to_template(request, 'inactive_account.html')
 		else:
 			# invalid login
-			return HttpResponseRedirect('signup.html')
+			return HttpResponseRedirect('/signup.html')
 
 def mylogout(request):
 	t = get_template('logout.html')
