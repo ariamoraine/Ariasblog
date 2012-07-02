@@ -59,5 +59,5 @@ def newuser(request):
 	user.is_staff=True
 	user.is_superuser=True
 	user.save()
-	html = t.render(Context({'user': user})
+	html = t.render(Context({'user': user}))
 	return HttpResponse(html)
