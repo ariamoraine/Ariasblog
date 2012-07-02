@@ -2,16 +2,16 @@
 {% block content %}
 
 {% if login = True %}
-<p> You're now signed in as {{ user.username }}</p>
-<p><a herf="/logout/">logout</a> <imput type="submit"></p>
+	<p> You're now signed in as {{ user.username }}</p>
+	<p><a herf="/logout/">logout</a> <imput type="submit"></p>
 {% else %}
-<h3>Login</h3>
-<form action="/login/" method="post" accept-charset="utf-8">
-<label for="username">Username</label><input type="text" name="username" value="" id="username" />
-<label for="password">Password</label><input type="password" name="password" value="" id="password" />
-<input type="hidden" name="next" value="{{ NEXT }}" />
-<p><input type="submit" value="Login →"></p>
-</form>
+	<h3>Login</h3>
+	<form action="/login/" method="post" accept-charset="utf-8">
+		<label for="username">Username</label><input type="text" name="username" value="" id="username" />
+		<label for="password">Password</label><input type="password" name="password" value="" id="password" />
+		<input type="hidden" name="next" value="{{ NEXT }}" />
+		<p><input type="submit" value="Login →"></p>
+	</form>
 {% endif %}
 
 <ol> 
