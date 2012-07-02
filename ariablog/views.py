@@ -74,7 +74,7 @@ def signin(request):
 			success = True
 			# Redirect to a success page.
 		else:
-        	disabled = True
+			disabled = True
 			# Return a 'disabled account' error message
 	else:
 		error = True
