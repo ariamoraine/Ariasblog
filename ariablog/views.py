@@ -63,19 +63,25 @@ def newuser(request):
 	html = t.render(Context({'user': user}))
 	return HttpResponse(html)
 
-def signin(request):
-	t = get_template('signin.html')
-	"""user_str = str(request.user)
-	if request.user.is_authenticated():
-		return HttpResponse('%s is logged in' % user_str)
-	else:
-		return HttpResponse('%s is not logged in' % user_str)"""
-	html = t.render(Context())
-	return HttpResponse(html)
+def mylogin(request):
+	if request.method == 'POST':
+		user = authenticate(username=request.POST['username'], password=request.POST['password'])
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+				# success
+				return HttpResponseRedirect('/')
+			else:
+				# disabled account
+				return direct_to_template(request, 'inactive_account.html')
+		else:
+			# invalid login
+			return direct_to_template(request, 'invalid_login.html')
 
-#create sign in url
+def mylogout(request):
+	logout(request)
+	return direct_to_template(request, 'logged_out.html')
 #create a signin.html
-#pass true or false from the if and else statments
 #make sign in link on main page
 #make new post show when signed in 
 #add user id to blog posts
