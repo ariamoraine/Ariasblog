@@ -85,7 +85,10 @@ def mylogin(request):
 
 def mylogout(request):
 	logout(request)
-	return direct_to_template(request, 'loggedout.html')
+	t = get_template('loggedout.html')
+	html = t.render(Context())
+	return HttpResponse(html)
+
 #create a signin.html
 #make sign in link on main page
 #make new post show when signed in 
