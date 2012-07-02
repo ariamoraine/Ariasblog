@@ -79,10 +79,8 @@ def mylogin(request):
 			return HttpResponseRedirect('/signup/')
 
 def mylogout(request):
-	t = get_template('/logout/')
 	logout(request)
-	html = t.render(Context())
-	return HttpResponse(html)
+	return direct_to_template(request, 'logout.html')
 
 #create a signin.html
 #make sign in link on main page
