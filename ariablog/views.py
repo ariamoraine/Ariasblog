@@ -66,21 +66,21 @@ def newuser(request):
 def signin(request):
 	t = get_template('signin.html')
 	username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            success = True
-            # Redirect to a success page.
-        else:
+	password = request.POST['password']
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		if user.is_active:
+			login(request, user)
+			success = True
+			# Redirect to a success page.
+		else:
         	disabled = True
-            # Return a 'disabled account' error message
-    else:
-    	error = True
-        # Return an 'invalid login' error message.
-    html = t.render(Context({'user': user}))
-    return HttpResponse(html)
+			# Return a 'disabled account' error message
+	else:
+		error = True
+		# Return an 'invalid login' error message.
+	html = t.render(Context({'user': user}))
+	return HttpResponse(html)
 
 #create sign in url
 #create a signin.html
