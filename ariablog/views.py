@@ -4,7 +4,7 @@ from django.template import Context
 from blog.models import BlogPost 
 import datetime
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic.simple import direct_to_template
 
 def index(request):
