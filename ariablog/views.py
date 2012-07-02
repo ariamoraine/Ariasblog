@@ -82,8 +82,9 @@ def mylogout(request):
 	logout(request)
 	return direct_to_template(request, 'logout.html')
 
-#create a signin.html
-#make sign in link on main page
+#make sign in work
+#only show new post when signed in
+#link to sign up on main page
 #make new post show when signed in 
 #add user id to blog posts
 #show username on blog posts
