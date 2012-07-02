@@ -17,7 +17,7 @@
 </ol>
 
 <hr>
-{% if request.user.is_authenticated() %}
+{% if request.user.is_authenticated %}
 	<h2>Make a new post</h2>
 	<form action="/post/" method="POST">
 		<label for="title">Title</label>
