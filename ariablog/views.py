@@ -72,7 +72,10 @@ def login_view(request):
 	if not user.is_active:
 		return direct_to_template(request, 'inactive_account.html')
 	login(request, user)
-	return HttpResponseRedirect(request.META.get(’HTTP_REFERER’, None) or '/')
+	try:
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
+	except KeyError:
+		return HttpResponseRedirect('/')
 
 def logout_view(request):
 	logout(request)
