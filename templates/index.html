@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<!-- Authenticate account menu -->
+<p> You are signed in as {{ user }}</p>
 {% else %}
 <h3>Login</h3>
 <form action="/login/" method="post" accept-charset="utf-8">
