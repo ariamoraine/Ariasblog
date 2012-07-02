@@ -71,10 +71,8 @@ def mylogin(request):
 			if user.is_active:
 				login(request, user)
 				if request.POST['next']:
-					login=True
 					return HttpResponseRedirect(request.POST['next'])
 				else:
-					login=True
 					return HttpResponseRedirect('/')
 			else:
 				# disabled account
