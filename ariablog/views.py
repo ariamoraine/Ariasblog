@@ -74,7 +74,7 @@ def login_view(request):
 	if request.method == 'POST':
 		user = authenticate(username = request.POST['username'], password = request.POST['password']) #built in auth checks username and password 
 	if user is None: #if the user isn't in the database redirected to signup page.
-		t = get_template('signup')
+		t = get_template('signup.html')
 		html = t.render(Context({'notuser': True}))
 		return HttpResponse(html)
 		#return direct_to_template(request, 'signup.html', 'notuser': True)
