@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
+{{ if notuser = True }}
+    <p> I'm sorry, that isn't a username or password that I know of. Would you like to sign up?</p>
+{{ endif }}
+
 <form action="/newuser/" method="POST">
     <label for "fistname">First Name</label>
     <input type="text" name="firstname">

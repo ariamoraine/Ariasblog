@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
 from ariablog.views import index, signup, login_view, logout_view, newuser, postpage, newpost, editpost, deletepost, areyousure
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
@@ -15,14 +14,5 @@ urlpatterns = patterns('',
 	('^newuser/', newuser),
 	(r'^login/$', login_view),
 	(r'^logout/$', logout_view),
-
-	# Examples:
-	# url(r'^$', 'ariablog.views.home', name='home'),
-	# url(r'^ariablog/', include('ariablog.foo.urls')),
-
-	# Uncomment the admin/doc line below to enable admin documentation:
-	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-	# Uncomment the next line to enable the admin:
 	(r'^admin/', include(admin.site.urls)),
 )
