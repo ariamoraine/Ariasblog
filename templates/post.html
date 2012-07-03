@@ -25,7 +25,9 @@
     {{ post.author.first_name }} {{ post.author.last_name }}
 </p>
 
-<a href="/edit/{{post.id}}">edit post?</a>
+{% if user == post.author %}
+    <a href="/edit/{{post.id}}">edit post?</a>
+{% endif %}
 
 <form action="/sure/{{post.id}}" method="POST">
 <label>Delete Post?</label>

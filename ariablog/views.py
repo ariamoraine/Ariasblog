@@ -14,7 +14,7 @@ def index(request):
 
 def postpage(request, postid):
 	t = get_template('post.html')
-	html = t.render(Context({'post': BlogPost.objects.get(id = postid)}))
+	html = t.render(RequestContext(request,{'post': BlogPost.objects.get(id = postid)}))
 	return HttpResponse(html)
 
 def newpost(request):
