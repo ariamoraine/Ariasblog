@@ -24,18 +24,21 @@ def newpost(request):
 	return HttpResponse(html)
 
 def editpost(request, id):
-	p = BlogPost.objects.get(id=id, author=request.user) 
-	if request.method == 'GET':
-		t = get_template('editpost.html')
-		html = t.render(Context({'post': p}))
-		return HttpResponse(html)
-	elif request.method == 'POST':
-		p.title = request.POST["title"]
-		p.body = request.POST["body"]
-		p.save()
-		t = get_template('post.html')
-		html = t.render(Context({'post': p, 'edited': True}))
-		return HttpResponse(html)
+	try:
+		p = BlogPost.objects.get(id=id, author=request.user) 
+		if request.method == 'GET':
+			t = get_template('editpost.html')
+			html = t.render(Context({'post': p}))
+			return HttpResponse(html)
+		elif request.method == 'POST':
+			p.title = request.POST["title"]
+			p.body = request.POST["body"]
+			p.save()
+			t = get_template('post.html')
+			html = t.render(Context({'post': p, 'edited': True}))
+			return HttpResponse(html)
+	except DoesNotExist:
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
 		
 def areyousure(request, id):
 	t = get_template('areyousure.html')
