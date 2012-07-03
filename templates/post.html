@@ -21,6 +21,10 @@
 	{{ post.date }}
 </p>
 
+<p>
+    {{ post.author.first_name }} {{ post.author.last_name }}
+</p>
+
 <a href="/edit/{{post.id}}">edit post?</a>
 
 <form action="/sure/{{post.id}}" method="POST">

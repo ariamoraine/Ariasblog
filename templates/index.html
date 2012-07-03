@@ -17,7 +17,7 @@
 <ol> 
 	{% for post in posts %}
 		<li> 
-			<H2> <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></H2>
+			<H2> <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> By {{ post.author.username }} </H2>
 		</li>
 	{% endfor %}
 </ol>
