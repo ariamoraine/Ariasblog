@@ -4,6 +4,7 @@ class BlogPost(models.Model):
 	title = models.CharField(max_length=30)
 	body = models.CharField(max_length=500)
 	date = models.DateField()
+	author = models.ForeignKey(User)
 
 	@models.permalink
 	def get_absolute_url(self):

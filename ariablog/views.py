@@ -18,7 +18,7 @@ def postpage(request, postid):
 	return HttpResponse(html)
 
 def newpost(request):
-	b = BlogPost.objects.create(title=request.POST["title"], body=request.POST["body"], date=datetime.date.today())
+	b = BlogPost.objects.create(title=request.POST["title"], body=request.POST["body"], date=datetime.date.today(), author=request.user)
 	t = get_template('post.html')
 	html = t.render(Context({'post': b, 'created': True}))
 	return HttpResponse(html)
