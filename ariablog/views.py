@@ -74,17 +74,12 @@ def login_view(request):
 	else:
 		login(request, user)
 		return HttpResponseRedirect('/')
-	"""try:
-		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
-	except KeyError:
-		return HttpResponseRedirect('/')"""
 
 def logout_view(request):
+	t = get_template('logout.html')
+	html = t.render(RequestContext(request))
 	logout(request)
-	try:
-		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
-	except KeyError:
-		return HttpResponseRedirect('/')
+	return HttpResponse(html)
 
 #only show new post when signed in
 #link to sign up on main page
