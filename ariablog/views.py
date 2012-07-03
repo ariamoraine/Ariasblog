@@ -84,7 +84,6 @@ def logout_view(request):
 	except KeyError:
 		return HttpResponseRedirect('/')
 
-#make sign in work
 #only show new post when signed in
 #link to sign up on main page
 #make new post show when signed in 
