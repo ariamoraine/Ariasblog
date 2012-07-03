@@ -24,7 +24,7 @@ def newpost(request):
 	return HttpResponse(html)
 
 def editpost(request, id):
-	p = BlogPost.objects.get(id=id)
+	p = BlogPost.objects.get(id=id, author=request.user) 
 	if request.method == 'GET':
 		t = get_template('editpost.html')
 		html = t.render(Context({'post': p}))
