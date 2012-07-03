@@ -65,17 +65,21 @@ def newuser(request):
 	return HttpResponse(html)
 
 def login_view(request):
+	t = get_template ('index.html')
 	if request.method == 'POST':
 		user = authenticate(username = request.POST['username'], password = request.POST['password'])
 	if user is None:
 		return direct_to_template(request, 'signup.html')
-	if not user.is_active:
+	elif not user.is_active:
 		return direct_to_template(request, 'inactive_account.html')
-	login(request, user)
-	try:
+	else:
+		login(request, user)
+		html = t.render(Context())
+		return HttpResponse(html)
+	"""try:
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
 	except KeyError:
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect('/')"""
 
 def logout_view(request):
 	logout(request)
