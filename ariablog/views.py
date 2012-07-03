@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
-from django.template import Context
+from django.template import Context, RequestContext
 from blog.models import BlogPost 
 import datetime
 from django.contrib.auth.models import User
