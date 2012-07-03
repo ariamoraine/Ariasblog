@@ -9,7 +9,7 @@ from django.views.generic.simple import direct_to_template
 
 def index(request):
 	t = get_template('index.html')
-	html = t.render(Context({'posts': BlogPost.objects.all()}))
+	html = t.render(RequestContext(request,{'posts': BlogPost.objects.all()}))
 	return HttpResponse(html)
 
 def postpage(request, postid):
@@ -65,7 +65,6 @@ def newuser(request):
 	return HttpResponse(html)
 
 def login_view(request):
-	t = get_template ('index.html')
 	if request.method == 'POST':
 		user = authenticate(username = request.POST['username'], password = request.POST['password'])
 	if user is None:
@@ -74,8 +73,7 @@ def login_view(request):
 		return direct_to_template(request, 'inactive_account.html')
 	else:
 		login(request, user)
-		html = t.render(Context())
-		return HttpResponse(html)
+		return HttpResponseRedirect('/')
 	"""try:
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
 	except KeyError:
