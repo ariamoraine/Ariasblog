@@ -37,9 +37,9 @@ def editpost(request, id):
 			t = get_template('post.html')
 			html = t.render(Context({'post': p, 'edited': True}))
 			return HttpResponse(html)
-	except DoesNotExist:
+	except BlogPost.DoesNotExist:
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
-		
+
 def areyousure(request, id):
 	t = get_template('areyousure.html')
 	html = t.render(Context({'post': BlogPost.objects.get(id=id)}))
