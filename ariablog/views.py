@@ -46,10 +46,13 @@ def areyousure(request, id):
 	return HttpResponse(html)
 
 def deletepost(request, id):
-	t = get_template('delete.html')
-	BlogPost.objects.get(id=id).delete()
-	html = t.render(Context())
-	return HttpResponse(html)
+	try:
+		t = get_template('delete.html')
+		BlogPost.objects.get(id=id, author=request.user).delete()
+		html = t.render(Context())
+		return HttpResponse(html)
+	except BlogPost.DoesNotExist:
+		return HttpResponseRedirect(request.META.get('HTTP_REFERER', None))
 
 def signup(request):
 	t = get_template('signup.html')

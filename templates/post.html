@@ -27,10 +27,11 @@
 
 {% if user == post.author %}
     <a href="/edit/{{post.id}}">edit post?</a>
+    <form action="/sure/{{post.id}}" method="POST">
+    <label>Delete Post?</label>
+    <input type=submit>
+    </form>
 {% endif %}
 
-<form action="/sure/{{post.id}}" method="POST">
-<label>Delete Post?</label>
-<input type=submit>
-</form>
+
 {% endblock %}
