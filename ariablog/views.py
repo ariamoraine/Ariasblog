@@ -7,12 +7,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic.simple import direct_to_template
 
-def index(request): # is called from urls.py, gets the index.html renders it with the posts context. Requestcontext is for the user model.
+def index(request): # Requestcontext is for the built in user model that will only work with a requestcontext.
 	t = get_template('index.html')
 	html = t.render(RequestContext(request,{'posts': BlogPost.objects.all()}))
 	return HttpResponse(html)
 
-def postpage(request, postid): #renders the post.html with the user data which will only work if its a request context
+def postpage(request, postid):
 	t = get_template('post.html')
 	html = t.render(RequestContext(request,{'post': BlogPost.objects.get(id = postid)}))
 	return HttpResponse(html)
@@ -75,11 +75,10 @@ def login_view(request):
 		user = authenticate(username = request.POST['username'], password = request.POST['password']) #built in auth checks username and password 
 	if user is None: #if the user isn't in the database redirected to signup page.
 		t = get_template('signup.html')
-		html = t.render(Context({'notuser': True}))
+		html = t.render(Context({'notuser': True}))#shows an error. 
 		return HttpResponse(html)
-		#return direct_to_template(request, 'signup.html', 'notuser': True)
 	elif not user.is_active:
-		return direct_to_template(request, 'inactive_account.html')
+		return direct_to_template(request, 'invalid_login.html')
 	else:
 		login(request, user)
 		return HttpResponseRedirect('/')
